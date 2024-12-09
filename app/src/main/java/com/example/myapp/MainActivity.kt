@@ -1,32 +1,31 @@
 package com.example.myapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.myapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    //Activity binding object to avoid using 'findViewById'
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        // calling button via binding with id with the pattern of 'binding.element_id'
+        binding.button.setOnClickListener {
 
-        setContentView(R.layout.activity_main)
-
-        val button: Button = findViewById(R.id.button)
-        button.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent) }
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-
-
+            // calling create function from SecondActivity and passing values from text fields
+            SecondActivity.create(
+                this,
+                binding.name.text.toString(),
+                binding.surname.text.toString(),
+                binding.age.text.toString().toInt(),
+                binding.weight.text.toString().toInt(),
+                binding.height.text.toString().toInt()
+            )
         }
-
     }
 }
