@@ -25,6 +25,18 @@ class SecondActivity : AppCompatActivity() {
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.button2.setOnClickListener {
+
+            // calling create function from ThirdActivity and passing values from text fields
+            ThirdActivity.create(
+                this,
+                binding.type.text.toString(),
+                binding.duration.text.toString(),
+                binding.calories.text.toString().toInt(),
+
+                )
+        }
+
         //get values from intent to use it further
         name = intent.getStringExtra(ARG_NAME) ?: ""
         surname = intent.getStringExtra(ARG_SURNAME) ?: ""
@@ -33,12 +45,17 @@ class SecondActivity : AppCompatActivity() {
         height = intent.getIntExtra(ARG_HEIGHT,0)
 
         //need to change using the previous example
-        val button: Button = findViewById(R.id.button2)
-        button.setOnClickListener {
-            val intent = Intent(this, ThirdActivity::class.java)
-            startActivity(intent) }
+        ///val button: Button = findViewById(R.id.button2)
+       /// button.setOnClickListener {
+            ///val intent = Intent(this, ThirdActivity::class.java)
+           /// startActivity(intent) }
 
-    }
+
+
+        // calling button via binding with id with the pattern of 'binding.element_id'
+
+
+   }
 
     //static functions and variables
     companion object {

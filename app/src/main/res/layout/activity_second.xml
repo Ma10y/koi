@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/type"
             android:layout_width="137dp"
             android:layout_height="52dp"
             android:layout_marginTop="228dp"
@@ -33,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText5"
+            android:id="@+id/duration"
             android:layout_width="125dp"
             android:layout_height="52dp"
             android:layout_marginTop="228dp"
@@ -44,7 +45,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText8"
+            android:id="@+id/calories"
             android:layout_width="125dp"
             android:layout_height="52dp"
             android:layout_marginStart="280dp"
